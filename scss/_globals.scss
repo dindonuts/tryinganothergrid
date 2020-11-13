@@ -1,0 +1,132 @@
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: grid;
+    font-size: $font-sm;
+    background-color: $LightGrayishBlue;
+    overflow-x: hidden;
+}
+
+.container {
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    // grid-template-rows: 18rem 18rem 18rem 18rem 18rem;
+    grid-template-rows: auto;
+    color: $LightGrayishBlue;
+    gap: 2rem;
+    padding: 2rem;
+
+    &__one,
+    &__two,
+    &__three,
+    &__four,
+    &__five {
+        padding: 1.875rem;
+        border-radius: 10px;
+        box-shadow: 0 3px 18px gray;
+
+        p {
+            opacity: 70%;
+        }
+    }
+
+    .grid:first-child {
+        grid-template-columns: 4.5rem 18rem 3rem;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "image name quotation"
+            "image status quotation";
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 2.25rem 17rem;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "image name"
+            "image status";
+
+        img {
+            grid-area: image;
+            border-radius: 50%;
+        }
+        h3 {
+            grid-area: name;
+            margin: 0;
+        }
+        p {
+            margin: 0;
+            grid-area: status;
+            opacity: 50%;
+        }
+
+        .quotation {
+            grid-area: quotation;
+            position: relative;
+            z-index: 3;
+            min-height: 3.67rem;
+            background-image: url(/images/bg-pattern-quotation.svg);
+            background-position: right bottom;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+    }
+
+    @include breakpoint-up(large) {
+        grid-template-columns: 16rem 16rem 16rem 16rem;
+        grid-template-rows: 50% 50%;
+        grid-template-areas:
+            "one one two three"
+            "four five five three";
+
+        &__one {
+            grid-area: one;
+        }
+
+        &__two {
+            grid-area: two;
+        }
+        &__three {
+            grid-area: three;
+        }
+        &__four {
+            grid-area: four;
+        }
+        &__five {
+            grid-area: five;
+        }
+    }
+
+    &__one {
+        background-color: $ModerateViolet;
+    }
+
+    &__two {
+        background-color: $VeryDarkGrayishBlue;
+    }
+    &__three {
+        background-color: white;
+        color: $VeryDarkBlackishBlue;
+    }
+    &__four {
+        background-color: white;
+        color: $VeryDarkBlackishBlue;
+    }
+    &__five {
+        background-color: $VeryDarkBlackishBlue;
+    }
+}
